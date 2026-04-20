@@ -1,0 +1,15 @@
+{
+  "name": "Integration - Error Handling for Snyk Test Failure",
+  "description": "Simulates a Snyk test failure and ensures the orchestrator returns the correct error response.",
+  "test_type": "integration",
+  "input": "Patch SnykIntegration.run_snyk_test to raise Exception, then call AgentOrchestrator.process_repository with valid inputs.",
+  "output": "Dictionary with success=False, error_code='ERR_SNYK_TEST_FAILED', and appropriate error message.",
+  "success_criteria": [
+    "Returned dictionary has 'success' == False",
+    "error_code == 'ERR_SNYK_TEST_FAILED'",
+    "error message contains 'Snyk test failed'"
+  ],
+  "error_scenarios": [
+    "SandboxManager.destroy_sandbox raises exception during cleanup"
+  ]
+}
