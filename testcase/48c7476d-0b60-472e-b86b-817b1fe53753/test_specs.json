@@ -1,0 +1,13 @@
+{
+  "name": "Functional - Malformed JSON Request Handling",
+  "description": "Ensures that the /process endpoint returns a proper error response when sent malformed JSON.",
+  "test_type": "functional",
+  "input": "POST /process with invalid JSON body (e.g., missing closing brace).",
+  "output": "JSON response with success=False, error message about malformed request, and HTTP 422.",
+  "success_criteria": [
+    "HTTP status is 422",
+    "response.success is False",
+    "response.error contains 'Malformed request' or 'invalid input'"
+  ],
+  "error_scenarios": null
+}
