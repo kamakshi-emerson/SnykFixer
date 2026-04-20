@@ -1,0 +1,17 @@
+{
+  "name": "Functional - Valid Repository Processing End-to-End",
+  "description": "Validates that the /process endpoint successfully processes a valid public GitHub repository URL and returns a structured report.",
+  "test_type": "functional",
+  "input": "POST /process with SnykProcessRequest containing a valid public GitHub repo_url, and valid snyk_api_token (github_access_token=None).",
+  "output": "SnykProcessResponse with success=True and a non-empty report.",
+  "success_criteria": [
+    "HTTP status is 200",
+    "response.success is True",
+    "response.report is not None and contains expected report sections",
+    "response.error is None"
+  ],
+  "error_scenarios": [
+    "Snyk API token is invalid",
+    "GitHub repository is not accessible"
+  ]
+}
