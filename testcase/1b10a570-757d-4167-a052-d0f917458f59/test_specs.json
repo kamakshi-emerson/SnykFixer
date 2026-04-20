@@ -1,0 +1,17 @@
+{
+  "name": "Functional - Invalid Repository URL Validation",
+  "description": "Ensures that the /process endpoint returns a validation error when an invalid GitHub repository URL is provided.",
+  "test_type": "functional",
+  "input": "POST /process with SnykProcessRequest containing an invalid repo_url (e.g., 'not_a_url').",
+  "output": "SnykProcessResponse with success=False, error_code='ERR_INVALID_REPO_URL', and appropriate error message.",
+  "success_criteria": [
+    "HTTP status is 200",
+    "response.success is False",
+    "response.error_code == 'ERR_INVALID_REPO_URL'",
+    "response.error contains 'invalid'"
+  ],
+  "error_scenarios": [
+    "Malformed JSON triggers FastAPI validation error",
+    "Unexpected exception in validation"
+  ]
+}
