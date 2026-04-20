@@ -1,0 +1,3 @@
+Runtime Auto-repair Notes:
+  - Agent runtime auto-repair: injected fallback values for NameError symbols: trace_agent
+  - Agent runtime auto-repair: injected fallback values for NameError symbols: _obs_settings
