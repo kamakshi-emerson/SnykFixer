@@ -1,0 +1,16 @@
+{
+  "name": "Integration - Snyk Test and Fix Generation Workflow",
+  "description": "Tests the integration between SnykIntegration, FixGenerator, and LLMService by running the process_repository method with a valid repo and tokens.",
+  "test_type": "integration",
+  "input": "Call AgentOrchestrator.process_repository with valid repo_url, github_access_token, and snyk_api_token.",
+  "output": "Dictionary with success=True and a report string containing both pre-fix and post-fix Snyk results.",
+  "success_criteria": [
+    "Returned dictionary has 'success' == True",
+    "Report includes both 'Snyk Test Results (Before Fix)' and 'Post-Fix Validation'",
+    "No error_code or error in result"
+  ],
+  "error_scenarios": [
+    "LLMService.call_llm fails",
+    "SnykIntegration.run_snyk_test raises exception"
+  ]
+}
